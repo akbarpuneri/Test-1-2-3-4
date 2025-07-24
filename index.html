@@ -126,7 +126,7 @@
         .memo-status-overdue { background-color: #fecaca; color: #b91c1c; } /* red-200, red-700 */
     </style>
 </head>
-<body class="antialiased">
+<body class="antialiased flex flex-col min-h-screen">
 
     <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-30 shadow-sm">
         <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -157,7 +157,7 @@
         </nav>
     </header>
 
-    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 flex-grow">
 
         <!-- No login section needed anymore -->
 
@@ -1083,6 +1083,16 @@
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(payload)
                 });
+                
+                if (!response.ok) {
+                    const errorBody = await response.json();
+                    const errorMessage = errorBody.error ? errorBody.error.message : 'Unknown API error';
+                    memoGenerationStatusEl.textContent = `Failed to generate memo: ${errorMessage}`;
+                    memoGenerationStatusEl.className = 'mt-4 text-sm text-red-600';
+                    console.error("API Error Response:", errorBody);
+                    return; // Exit if response is not OK
+                }
+
                 const result = await response.json();
 
                 if (result.candidates && result.candidates.length > 0 &&
@@ -1095,8 +1105,9 @@
                     memoGenerationStatusEl.className = 'mt-4 text-sm text-green-600';
                     sendForReviewBtn.disabled = false;
                 } else {
-                    memoGenerationStatusEl.textContent = 'Failed to generate memo. Unexpected API response.';
+                    memoGenerationStatusEl.textContent = 'Failed to generate memo. Unexpected API response structure.';
                     memoGenerationStatusEl.className = 'mt-4 text-sm text-red-600';
+                    console.error("Unexpected API response structure:", result);
                 }
             } catch (error) {
                 console.error("Error generating memo:", error);
