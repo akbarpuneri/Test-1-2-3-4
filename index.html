@@ -97,11 +97,12 @@
         }
         .risk-matrix-grid {
             display: grid;
-            grid-template-columns: repeat(6, 1fr);
-            grid-template-rows: repeat(6, 1fr);
+            grid-template-columns: repeat(6, 1fr); /* 1 for label + 5 for impact scores */
+            grid-template-rows: repeat(6, 1fr); /* 1 for label + 5 for likelihood scores */
             gap: 0.5rem;
             aspect-ratio: 1/1;
             max-width: 500px;
+            margin: 0 auto; /* Center the grid */
         }
         .risk-cell {
             display: flex;
@@ -163,8 +164,8 @@
 
         <div id="app-content">
             <section id="intro" class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-slate-900 mb-4">Kerangka Kerja Interaktif untuk Analisis Belanja Modal</h2>
-                <p class="max-w-3xl mx-auto text-lg text-slate-600">Aplikasi ini menerjemahkan prinsip-prinsip analisis CapEx yang kuat ke dalam pengalaman interaktif. Unggah data CSV Anda untuk menjelajahi komponen-komponen utama, mengevaluasi proyek dengan metrik keuangan langsung, membuat memo investasi bertenaga AI, dan mengelola proses peninjauan.</p>
+                <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-slate-900 mb-4">Nota Analisa Investasi InJourney group</h2>
+                <p class="max-w-3xl mx-auto text-lg text-slate-600">Melakukan engumpulan datadan mengajukan NAI melalui sistem berbasis web.</p>
             </section>
 
             <!-- Tampilan Proposer -->
@@ -209,7 +210,7 @@
                             <p class="text-xs text-slate-500">Aset Operasional & Proyek Baru</p>
                         </a>
                         <div class="text-2xl text-slate-400 mx-4 hidden md:block">→</div>
-                         <div class="text-2xl text-slate-400 my-2 md:hidden">↓</div>
+                         <div class="2xl text-slate-400 my-2 md:hidden">↓</div>
                         <a href="#evaluation" class="p-4 bg-white rounded-lg shadow-md text-center w-48 hover:shadow-xl transition-shadow">
                             <div class="text-4xl">📈</div>
                             <h4 class="font-semibold mt-2">2. Proyeksi Keuangan</h4>
@@ -223,7 +224,7 @@
                             <p class="text-xs text-slate-500">Metrik seperti NPV & IRR</p>
                         </a>
                          <div class="text-2xl text-slate-400 mx-4 hidden md:block">→</div>
-                         <div class="text-2xl text-slate-400 my-2 md:hidden">↓</div>
+                         <div class="2xl text-slate-400 my-2 md:hidden">↓</div>
                          <a href="#risk" class="p-4 bg-white rounded-lg shadow-md text-center w-48 hover:shadow-xl transition-shadow">
                             <div class="text-4xl">⚠️</div>
                             <h4 class="font-semibold mt-2">4. Penilaian Risiko</h4>
@@ -737,39 +738,39 @@
         }
 
         function initRiskMatrix() {
-            const matrixContainer = document.getElementById('risk-matrix-proposer'); // Mengubah ID agar spesifik untuk tampilan proposer
-            const likelihoodSlider = document.getElementById('likelihood-slider-proposer'); // Mengubah ID
-            const impactSlider = document.getElementById('impact-slider-proposer'); // Mengubah ID
+            const matrixContainer = document.getElementById('risk-matrix-proposer');
+            const likelihoodSlider = document.getElementById('likelihood-slider-proposer');
+            const impactSlider = document.getElementById('impact-slider-proposer');
             const likelihoodValue = document.getElementById('likelihood-value');
             const impactValue = document.getElementById('impact-value');
-            const riskRatingEl = document.getElementById('risk-rating-proposer'); // Mengubah ID
-            const riskCategoryEl = document.getElementById('risk-category-proposer'); // Mengubah ID
+            const riskRatingEl = document.getElementById('risk-rating-proposer');
+            const riskCategoryEl = document.getElementById('risk-category-proposer');
 
             const likelihoodLabels = ['Jarang', 'Tidak Mungkin', 'Mungkin', 'Kemungkinan', 'Pasti'];
             const impactLabels = ['Sepele', 'Minor', 'Sedang', 'Besar', 'Parah'];
 
             function createMatrix() {
                 matrixContainer.innerHTML = '';
-                // Baris header pertama untuk label dampak
-                const impactHeaderRow = document.createElement('div');
-                impactHeaderRow.className = 'contents'; // Menggunakan contents untuk grid agar elemen anak tetap di grid
-                const emptyCell = document.createElement('div');
-                emptyCell.className = 'text-xs font-bold text-slate-500 text-center';
-                impactHeaderRow.appendChild(emptyCell); // Sel kosong di pojok kiri atas
+                // Add empty cell for alignment in the first row, first column
+                const emptyHeaderCell = document.createElement('div');
+                emptyHeaderCell.className = 'text-xs font-bold text-slate-500 text-center flex items-center justify-center';
+                matrixContainer.appendChild(emptyHeaderCell);
+
+                // Impact labels (top row)
                 impactLabels.forEach(h => {
                     const cell = document.createElement('div');
-                    cell.className = 'text-xs font-bold text-slate-500 text-center flex items-center justify-center transform rotate-0 md:-rotate-45 p-1'; // Sesuaikan rotasi
+                    cell.className = 'text-xs font-bold text-slate-500 text-center flex items-center justify-center p-1';
                     cell.textContent = h;
-                    impactHeaderRow.appendChild(cell);
+                    matrixContainer.appendChild(cell);
                 });
-                matrixContainer.appendChild(impactHeaderRow);
 
-                for (let i = 5; i >= 1; i--) { // Likelihood dari 5 (tinggi) ke 1 (rendah)
+                // Matrix cells and likelihood labels (rows)
+                for (let i = 5; i >= 1; i--) { // Likelihood from 5 (high) to 1 (low)
                     const rowLabel = document.createElement('div');
                     rowLabel.className = 'text-xs font-bold text-slate-500 text-center flex items-center justify-center p-1';
-                    rowLabel.textContent = likelihoodLabels[i-1]; // Sesuaikan indeks untuk label
+                    rowLabel.textContent = likelihoodLabels[i-1]; // Adjust index for label
                     matrixContainer.appendChild(rowLabel);
-                    for (let j = 1; j <= 5; j++) { // Impact dari 1 (rendah) ke 5 (tinggi)
+                    for (let j = 1; j <= 5; j++) { // Impact from 1 (low) to 5 (high)
                         const cell = document.createElement('div');
                         cell.id = `risk-cell-${i}-${j}`;
                         cell.className = 'risk-cell';
@@ -864,8 +865,44 @@
                 });
             });
             
+            // Set default active tab
             tabButtons[0].click();
         }
+
+        // Fungsi untuk menavigasi ke bagian tertentu dan memperbarui tautan navigasi
+        function navigateToSection(sectionId) {
+            // Sembunyikan semua bagian konten kecuali intro
+            document.querySelectorAll('#proposer-view > section, #committee-view > section, #memos-section-for-proposer-message, #memos, #schema').forEach(section => {
+                section.classList.add('hidden');
+            });
+
+            // Tampilkan bagian yang diminta
+            const targetSection = document.getElementById(sectionId);
+            if (targetSection) {
+                targetSection.classList.remove('hidden');
+                // For committee view, if navigating to #memos, ensure memoList is visible
+                if (sectionId === 'memos' && window.userRole === 'committee') {
+                    document.getElementById('memoList').parentElement.classList.remove('hidden');
+                    document.getElementById('memoDetailView').classList.add('hidden');
+                }
+            } else {
+                console.warn(`Bagian dengan ID '${sectionId}' tidak ditemukan.`);
+            }
+
+            // Perbarui kelas aktif pada tautan navigasi
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${sectionId}`) {
+                    link.classList.add('active');
+                }
+            });
+
+            // Gulir ke bagian yang dipilih
+            if (targetSection) {
+                targetSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
 
         // Fungsi inisialisasi aplikasi utama, dipanggil setelah Firestore siap atau slider berubah
         function updateRoleAndUI(roleValue) {
@@ -873,17 +910,13 @@
             window.currentUserId = (roleValue === 0) ? 'proposer_simulated_user' : 'committee_simulated_user';
             authStatusEl.textContent = `Peran Saat Ini: ${window.userRole.charAt(0).toUpperCase() + window.userRole.slice(1)}`;
 
-            // Atur ulang visibilitas untuk semua bagian konten utama
-            document.getElementById('proposer-view').classList.add('hidden');
-            document.getElementById('committee-view').classList.add('hidden');
-            document.getElementById('memos-section-for-proposer-message').classList.add('hidden');
-            document.getElementById('memos').classList.add('hidden'); // Bagian memo utama
-
-            // Sembunyikan semua tautan navigasi pada awalnya, lalu tampilkan berdasarkan peran
+            // Sembunyikan semua tautan navigasi pada awalnya
             document.querySelectorAll('.nav-link').forEach(link => link.classList.add('hidden'));
 
             if (window.userRole === 'proposer') {
                 document.getElementById('proposer-view').classList.remove('hidden');
+                document.getElementById('committee-view').classList.add('hidden'); // Ensure committee view is hidden
+                
                 document.querySelector('a[href="#data-upload"]').classList.remove('hidden');
                 document.querySelector('a[href="#lifecycle"]').classList.remove('hidden');
                 document.querySelector('a[href="#components"]').classList.remove('hidden');
@@ -891,27 +924,29 @@
                 document.querySelector('a[href="#risk"]').classList.remove('hidden');
                 document.querySelector('a[href="#memo-generation"]').classList.remove('hidden');
                 document.querySelector('a[href="#schema"]').classList.remove('hidden');
-                // Tampilkan pesan spesifik untuk pengusul di area bagian memo
-                document.getElementById('memos-section-for-proposer-message').classList.remove('hidden');
-
+                
+                // Default ke bagian unggah data untuk proposer
+                navigateToSection('data-upload'); 
             } else { // committee
                 document.getElementById('committee-view').classList.remove('hidden');
+                document.getElementById('proposer-view').classList.add('hidden'); // Ensure proposer view is hidden
+
                 document.querySelector('a[href="#committee-dashboard"]').classList.remove('hidden');
                 document.querySelector('a[href="#memos"]').classList.remove('hidden');
                 document.querySelector('a[href="#schema"]').classList.remove('hidden'); // Komite mungkin membutuhkan referensi skema
 
-                // Tampilkan bagian memo utama untuk anggota komite
-                document.getElementById('memos').classList.remove('hidden');
+                // Default ke dasbor komite untuk komite
+                navigateToSection('committee-dashboard');
                 updateCommitteeDashboard(); // Perbarui jumlah dasbor
             }
 
-            // Inisialisasi umum untuk kedua peran (grafik, kalkulator, pengaturan matriks risiko)
+            // Common initializations for both roles (charts, calculator, risk matrix setup)
             createOperatingAssetChart({ labels: [], revenue: [], expenses: [] });
             createProjectionChart({ labels: [], revenue: [], costs: [] });
             initCalculator([]);
-            initRiskMatrix(); // Ini akan menginisialisasi matriks risiko proposer
-            initTabs();
-            listenForMemos(); // Listener ini akan mengisi daftar memo untuk kedua peran, tetapi hanya komite yang dapat berinteraksi.
+            initRiskMatrix(); // This will initialize the proposer's risk matrix
+            initTabs(); // Re-initialize tabs to ensure correct active state
+            listenForMemos(); // This listener will populate the memo list for both roles, but only committee can interact.
         }
 
         // Event listener untuk slider peran
@@ -919,8 +954,17 @@
             updateRoleAndUI(parseInt(event.target.value));
         });
 
+        // Add event listeners for navigation links
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', (event) => {
+                event.preventDefault(); // Prevent default anchor jump
+                const sectionId = link.getAttribute('href').substring(1); // Get ID without '#'
+                navigateToSection(sectionId);
+            });
+        });
 
-        // Logika Unggah Data (tetap sama)
+
+        // Data Upload Logic (tetap sama)
         document.getElementById('loadDataBtn').addEventListener('click', async () => {
             uploadStatusEl.textContent = 'Memuat data...';
             uploadStatusEl.className = 'md:col-span-2 lg:col-span-3 text-center text-sm mt-4 text-blue-600';
@@ -934,7 +978,8 @@
             if (operatingAssetFile) {
                 try {
                     const text = await operatingAssetFile.text();
-                    operatingAssetData = parseCSV(text); // Use parseCSV directly
+                    // Store the raw parsed data, then process for chart
+                    operatingAssetData = parseCSV(text); 
                     createOperatingAssetChart(processOperatingAssetCSV(operatingAssetData));
                 } catch (error) {
                     uploadStatusEl.textContent = `Kesalahan memuat data Aset Operasional: ${error.message}`;
@@ -950,7 +995,8 @@
             if (projectionFile) {
                 try {
                     const text = await projectionFile.text();
-                    projectionData = parseCSV(text); // Use parseCSV directly
+                    // Store the raw parsed data, then process for chart
+                    projectionData = parseCSV(text); 
                     createProjectionChart(processProjectionCSV(projectionData));
                 } catch (error) {
                     uploadStatusEl.textContent = `Kesalahan memuat data Proyeksi: ${error.message}`;
@@ -988,7 +1034,7 @@
             }
         });
 
-        // Integrasi LLM untuk Pembuatan Memo (diperbarui untuk Bahasa Indonesia dan penanganan kesalahan)
+        // LLM Integration for Memo Generation (diperbarui untuk Bahasa Indonesia dan penanganan kesalahan)
         generateMemoBtn.addEventListener('click', async () => {
             if (!operatingAssetData || !projectionData || !cashflowData) {
                 memoGenerationStatusEl.textContent = 'Harap unggah semua data CSV yang diperlukan terlebih dahulu.';
