@@ -133,7 +133,7 @@
         <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
                 <div class="flex-shrink-0">
-                    <h1 class="text-xl font-bold text-slate-800">Nota Analisa Investasi</h1>
+                    <h1 class="text-xl font-bold text-slate-800">Nota Analisa Investasi InJourney Group</h1>
                 </div>
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-baseline space-x-4">
@@ -150,7 +150,7 @@
                     </div>
                 </div>
                 <div class="text-sm text-slate-600 flex items-center space-x-2">
-                    <span id="auth-status">Peran Saat Ini: Pengusul</span>
+                    <span id="auth-status">Peran Saat Ini: Proposer</span>
                     <label for="role-slider" class="sr-only">Pilih Peran Pengguna</label>
                     <input type="range" id="role-slider" min="0" max="1" value="0" class="w-24 h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer">
                 </div>
@@ -164,8 +164,8 @@
 
         <div id="app-content">
             <section id="intro" class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-slate-900 mb-4">Nota Analsa Investasi InJourney Group</h2>
-                <p class="max-w-3xl mx-auto text-lg text-slate-600">Portal utuk menyusun dan melakukan submisi draft NAI di dalam InJourney Group.</p>
+                <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-slate-900 mb-4">Nota Analisa Investasi InJourney Group</h2>
+                <p class="max-w-3xl mx-auto text-lg text-slate-600">Portal untuk menyusun dan melakukan submisi draft NAI di dalam InJourney Group.</p>
             </section>
 
             <!-- Tampilan Proposer -->
@@ -447,8 +447,8 @@
             <!-- Bagian Skema umum untuk kedua peran, tetapi hanya terlihat jika dinavigasi ke sana -->
             <section id="schema" class="mb-20">
                 <div class="text-center">
-                    <h3 class="text-2xl font-bold text-slate-800">Kebutuhan Data Finansial</h3>
-                    <p class="mt-2 text-md text-slate-500">Data yang dibutuhkan dalam pembentukan Nota Analisa Investasi dari aspek finansial. DAta yang diunggah harus dalam bentuk CSV.</p>
+                    <h3 class="text-2xl font-bold text-slate-800">Penjelajah Skema Data</h3>
+                    <p class="mt-2 text-md text-slate-500">Analisis yang sukses bergantung pada data yang terstruktur dengan baik. Jelajahi struktur data CSV yang diperlukan di bawah ini.</p>
                 </div>
                 <div class="w-full max-w-4xl mx-auto mt-8">
                     <div class="mb-4 flex flex-wrap justify-center border-b border-gray-200">
@@ -468,7 +468,7 @@
 
     <footer class="bg-slate-800 text-slate-300 mt-16">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-4 text-center text-sm">
-            <p>Nota Analisa Investasi InJourney Group | Submisi draft dan analisis oleh Komite Investasi InJourney Group.</p>
+            <p>Kerangka Kerja Analisis CapEx Interaktif | Dibangun untuk mendemonstrasikan konsep dari laporan sumber.</p>
             <p class="mt-1">Catatan: Notifikasi dan pengiriman komentar otomatis disimulasikan fitur sisi klien untuk tujuan demonstrasi.</p>
         </div>
     </footer>
@@ -953,8 +953,8 @@
 
         // Fungsi inisialisasi aplikasi utama, dipanggil setelah Firestore siap atau slider berubah
         function updateRoleAndUI(roleValue) {
-            window.userRole = (roleValue === 0) ? 'Pengusul' : 'committee';
-            window.currentUserId = (roleValue === 0) ? 'pengusul_simulated_user' : 'committee_simulated_user';
+            window.userRole = (roleValue === 0) ? 'proposer' : 'committee';
+            window.currentUserId = (roleValue === 0) ? 'proposer_simulated_user' : 'committee_simulated_user';
             authStatusEl.textContent = `Peran Saat Ini: ${window.userRole.charAt(0).toUpperCase() + window.userRole.slice(1)}`;
 
             // Sembunyikan semua tautan navigasi pada awalnya
