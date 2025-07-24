@@ -133,7 +133,7 @@
         <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
                 <div class="flex-shrink-0">
-                    <h1 class="text-xl font-bold text-slate-800">Perangkat Analisis CapEx</h1>
+                    <h1 class="text-xl font-bold text-slate-800">Nota Analisa Investasi</h1>
                 </div>
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-baseline space-x-4">
@@ -150,7 +150,7 @@
                     </div>
                 </div>
                 <div class="text-sm text-slate-600 flex items-center space-x-2">
-                    <span id="auth-status">Peran Saat Ini: Proposer</span>
+                    <span id="auth-status">Peran Saat Ini: Pengusul</span>
                     <label for="role-slider" class="sr-only">Pilih Peran Pengguna</label>
                     <input type="range" id="role-slider" min="0" max="1" value="0" class="w-24 h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer">
                 </div>
@@ -164,8 +164,8 @@
 
         <div id="app-content">
             <section id="intro" class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-slate-900 mb-4">Nota Analisa Investasi InJourney group</h2>
-                <p class="max-w-3xl mx-auto text-lg text-slate-600">Melakukan engumpulan datadan mengajukan NAI melalui sistem berbasis web.</p>
+                <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-slate-900 mb-4">Nota Analsa Investasi InJourney Group</h2>
+                <p class="max-w-3xl mx-auto text-lg text-slate-600">Portal utuk menyusun dan melakukan submisi draft NAI di dalam InJourney Group.</p>
             </section>
 
             <!-- Tampilan Proposer -->
@@ -340,6 +340,42 @@
                         <p class="mt-2 text-md text-slate-500">Gunakan AI untuk secara otomatis membuat memo investasi ringkas berdasarkan data dan analisis yang Anda unggah. Memo ini kemudian dapat dikirim untuk ditinjau oleh komite.</p>
                     </div>
                     <div class="section-card p-6">
+                        <!-- New Manual Input Fields for Memo Criteria -->
+                        <div class="mb-6 space-y-4">
+                            <div>
+                                <label for="memoPurposeInput" class="block text-sm font-medium text-slate-700 mb-2">2. Kepentingan / Objektivitas / Tujuan</label>
+                                <textarea id="memoPurposeInput" class="w-full p-2 border rounded-md resize-y" rows="3" placeholder="Diisi Penjelasan singkat sesuai dengan penjelasan pada kajian aspek Kepentingan/Objektivitas/Tujuan menunjukkan bahwa …."></textarea>
+                            </div>
+                            <div>
+                                <label for="memoEnvironmentalInput" class="block text-sm font-medium text-slate-700 mb-2">3. Lingkungan, Sosial, dan Ekonomi</label>
+                                <textarea id="memoEnvironmentalInput" class="w-full p-2 border rounded-md resize-y" rows="3" placeholder="Diisi Penjelasan singkat sesuai dengan penjelasan pada kajian aspek Sosial dan Ekonomi menunjukkan bahwa e.g.: Jumlah tenaga kerja yang dilibatkan, Kontribusi terhadap GDP, Dampak Lingkungan"></textarea>
+                            </div>
+                            <div>
+                                <label for="memoFiscalInput" class="block text-sm font-medium text-slate-700 mb-2">4. Fiskal</label>
+                                <textarea id="memoFiscalInput" class="w-full p-2 border rounded-md resize-y" rows="3" placeholder="Diisi Penjelasan singkat sesuai dengan penjelasan pada kajian aspek Fiskal menunjukkan bahwa e.g.: Kontribusi Pajak Pemerintah Pusat/Daerah, Nilai kontribusi perusahaan sebagai agent of development ( kontribusi pajak dan PNBP sebesar Rp xxx,- , kontribusi Dividen sebesar Rp xxx,- dll), Besaran Insentif Pajak"></textarea>
+                            </div>
+                            <div>
+                                <label for="memoOperationalInput" class="block text-sm font-medium text-slate-700 mb-2">5. Pelayanan dan Operasional</label>
+                                <textarea id="memoOperationalInput" class="w-full p-2 border rounded-md resize-y" rows="3" placeholder="Diisi sesuai dengan penjelasan pada kajian / lampiran e.g.: Menjaga skor CSI dengan target sebesar …, Downtime Operation (Serviceability Percentage), Length of Stay, Meminimalisasi Complain Resolution Rate, Peningkatan Jumlah Pengguna Jasa (Penumpang/Wisatawan/Visitor), Peningkatan Occupancy Rate, Pemenuhan 3S (Safety, Security, dan Services), Pemenuhan K3 (Kesehatan dan Keselamatan Kerja)"></textarea>
+                            </div>
+                            <div>
+                                <label for="memoLegalInput" class="block text-sm font-medium text-slate-700 mb-2">6. Legal</label>
+                                <textarea id="memoLegalInput" class="w-full p-2 border rounded-md resize-y" rows="3" placeholder="Diisi sesuai dengan penjelasan pada kajian / lampiran e.g.: Analisa Hukum terkait Ketentuan Undang Undang Perseroan Terbatas, BUMN dan Ketentuan Internal Governance di Perusahaan, Analisa Hukum terkait Hubungan Hukum dengan Pihak Ketiga (jika ada), Analisa Pelaksanaan Fiduciary Duty Direksi Perusahaan, Analisa Hukum terkait Lainnya (jika ada), Analisa Risiko Hukum dan Mitigasi"></textarea>
+                            </div>
+                            <div>
+                                <label for="memoRiskManagementInput" class="block text-sm font-medium text-slate-700 mb-2">7. Manajemen Risiko</label>
+                                <textarea id="memoRiskManagementInput" class="w-full p-2 border rounded-md resize-y" rows="3" placeholder="Diisi sesuai dengan penjelasan pada kajian / lampiran e.g.: Nilai Eksposur Risiko, Biaya MItigasi Risiko"></textarea>
+                            </div>
+                            <div>
+                                <label for="memoGovernanceInput" class="block text-sm font-medium text-slate-700 mb-2">8. Corporate Governance & Compliance</label>
+                                <textarea id="memoGovernanceInput" class="w-full p-2 border rounded-md resize-y" rows="3" placeholder="Diisi sesuai dengan penjelasan pada kajian / lampiran e.g.: Penjelasan singkat terkait tingkat kepatuhan terhadap dokumen kelengkapan investasi/aksi korporasi dari Pengusul, Penjelasan singkat terkait tingkat kepatuhan internal"></textarea>
+                            </div>
+                            <div>
+                                <label for="memoOtherAspectsInput" class="block text-sm font-medium text-slate-700 mb-2">9. Aspek Lainnya</label>
+                                <textarea id="memoOtherAspectsInput" class="w-full p-2 border rounded-md resize-y" rows="3" placeholder="Dapat diusulkan parameter terkait aspek lainnya oleh Unit Terkait lainnya, e.g.: Meng-counter Sentimen Pemberitaan, Pemenuhan SLA untuk IT Maturity, SDM"></textarea>
+                            </div>
+                        </div>
+
                         <button id="generateMemoBtn" class="px-6 py-3 bg-green-600 text-white font-semibold rounded-lg shadow-md hover:bg-green-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed">Buat Memo Investasi</button>
                         <div id="memoGenerationStatus" class="mt-4 text-sm text-slate-600"></div>
                         <div id="generatedMemoDisplay" class="mt-6 p-4 bg-slate-50 rounded-lg hidden">
@@ -411,8 +447,8 @@
             <!-- Bagian Skema umum untuk kedua peran, tetapi hanya terlihat jika dinavigasi ke sana -->
             <section id="schema" class="mb-20">
                 <div class="text-center">
-                    <h3 class="text-2xl font-bold text-slate-800">Penjelajah Skema Data</h3>
-                    <p class="mt-2 text-md text-slate-500">Analisis yang sukses bergantung pada data yang terstruktur dengan baik. Jelajahi struktur data CSV yang diperlukan di bawah ini.</p>
+                    <h3 class="text-2xl font-bold text-slate-800">Kebutuhan Data Finansial</h3>
+                    <p class="mt-2 text-md text-slate-500">Data yang dibutuhkan dalam pembentukan Nota Analisa Investasi dari aspek finansial. DAta yang diunggah harus dalam bentuk CSV.</p>
                 </div>
                 <div class="w-full max-w-4xl mx-auto mt-8">
                     <div class="mb-4 flex flex-wrap justify-center border-b border-gray-200">
@@ -432,7 +468,7 @@
 
     <footer class="bg-slate-800 text-slate-300 mt-16">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-4 text-center text-sm">
-            <p>Kerangka Kerja Analisis CapEx Interaktif | Dibangun untuk mendemonstrasikan konsep dari laporan sumber.</p>
+            <p>Nota Analisa Investasi InJourney Group | Submisi draft dan analisis oleh Komite Investasi InJourney Group.</p>
             <p class="mt-1">Catatan: Notifikasi dan pengiriman komentar otomatis disimulasikan fitur sisi klien untuk tujuan demonstrasi.</p>
         </div>
     </footer>
@@ -485,6 +521,17 @@
         const addCommentBtn = document.getElementById('addCommentBtn');
         const roleSlider = document.getElementById('role-slider');
         const authStatusEl = document.getElementById('auth-status');
+
+        // New elements for manual memo input
+        const memoPurposeInput = document.getElementById('memoPurposeInput');
+        const memoEnvironmentalInput = document.getElementById('memoEnvironmentalInput');
+        const memoFiscalInput = document.getElementById('memoFiscalInput');
+        const memoOperationalInput = document.getElementById('memoOperationalInput');
+        const memoLegalInput = document.getElementById('memoLegalInput');
+        const memoRiskManagementInput = document.getElementById('memoRiskManagementInput');
+        const memoGovernanceInput = document.getElementById('memoGovernanceInput');
+        const memoOtherAspectsInput = document.getElementById('memoOtherAspectsInput');
+
 
         let currentMemoId = null; // Untuk melacak memo yang sedang dilihat/dikomentari
 
@@ -545,7 +592,7 @@
                     { name: 'Beban_Penyusutan', type: 'Numeric, USD', desc: 'Beban penyusutan tahunan yang diakui untuk aset yang dikapitalisasi pada tahun tersebut.' },
                     { name: 'Beban_Pajak', type: 'Numeric, USD', desc: 'Perkiraan beban pajak tahunan yang terkait dengan profitabilitas aset, dihitung berdasarkan pendapatan kena pajak yang diproyeksikan.' },
                     { name: 'CapEx_Pemeliharaan_Modal', type: 'Numeric, USD', desc: 'Setiap belanja modal yang berulang atau berkala yang secara khusus diperlukan untuk menjaga fungsionalitas aset, memperpanjang masa pakainya, atau memastikan operasi berkelanjutannya pada tingkat yang diproyeksikan. Ini berbeda dari CapEx proyek awal.' },
-                    { name: 'Arus_Kas_Bersih_dari_Aset', type: 'Numeric, USD', desc: 'Arus kas bersih yang dihitung yang berasal langsung dari operasi aset pada tahun tersebut. Ini biasanya dihitung sebagai `Pendapatan_Proyeksi - Biaya_Operasional_Proyeksi - Beban_Pajak - CapEx_Pemeliharaan_Modal + Beban_Penyusutan` (Penyusutan ditambahkan kembali karena merupakan beban non-kas). Nilai ini berfungsi sebagai input kunci untuk `Arus_Kas` dalam Tabel 3.' }
+                    { name: 'Arus_Kas_Bersih_dari_Aset', type: 'Numeric, USD', desc: 'Arus kas bersih yang dihitung yang berasal langsung dari aset\'s operasi pada tahun tersebut. Ini biasanya dihitung sebagai `Pendapatan_Proyeksi - Biaya_Operasional_Proyeksi - Beban_Pajak - CapEx_Pemeliharaan_Modal + Beban_Penyusutan` (Penyusutan ditambahkan kembali karena merupakan beban non-kas). Nilai ini berfungsi sebagai input kunci untuk `Arus_Kas` dalam Tabel 3.' }
                 ]
             }
         };
@@ -906,8 +953,8 @@
 
         // Fungsi inisialisasi aplikasi utama, dipanggil setelah Firestore siap atau slider berubah
         function updateRoleAndUI(roleValue) {
-            window.userRole = (roleValue === 0) ? 'proposer' : 'committee';
-            window.currentUserId = (roleValue === 0) ? 'proposer_simulated_user' : 'committee_simulated_user';
+            window.userRole = (roleValue === 0) ? 'Pengusul' : 'committee';
+            window.currentUserId = (roleValue === 0) ? 'pengusul_simulated_user' : 'committee_simulated_user';
             authStatusEl.textContent = `Peran Saat Ini: ${window.userRole.charAt(0).toUpperCase() + window.userRole.slice(1)}`;
 
             // Sembunyikan semua tautan navigasi pada awalnya
@@ -1047,39 +1094,77 @@
             generateMemoBtn.disabled = true;
             sendForReviewBtn.disabled = true;
 
-            // Prompt diterjemahkan ke Bahasa Indonesia
+            // Get manual inputs
+            const purposeText = memoPurposeInput.value.trim();
+            const environmentalText = memoEnvironmentalInput.value.trim();
+            const fiscalText = memoFiscalInput.value.trim();
+            const operationalText = memoOperationalInput.value.trim();
+            const legalText = memoLegalInput.value.trim();
+            const riskManagementText = memoRiskManagementInput.value.trim();
+            const governanceText = memoGovernanceInput.value.trim();
+            const otherAspectsText = memoOtherAspectsInput.value.trim();
+
+            // Prompt diterjemahkan ke Bahasa Indonesia dengan struktur baru
             const prompt = `
-            Hasilkan ringkasan memo investasi yang ringkas untuk proyek Belanja Modal.
+            Hasilkan ringkasan memo investasi yang ringkas dan komprehensif untuk proyek Belanja Modal.
             Proyek ini melibatkan pembangunan "Pusat Distribusi Pantai Barat" dengan CapEx awal sebesar $5.000.000.
             
-            Berikut adalah datanya:
+            Berikut adalah data dan kajian yang harus dimasukkan ke dalam memo:
             
-            1. Kinerja Historis Aset Operasional (Pendapatan, Beban per Tahun):
-            Tahun: ${operatingAssetData.map(row => row.Year).join(', ')}
-            Pendapatan: ${operatingAssetData.map(row => formatCurrency(parseFloat(row.Operating_Revenue))).join(', ')}
-            Beban: ${operatingAssetData.map(row => formatCurrency(parseFloat(row.Operating_Expenses))).join(', ')}
+            1. Finansial / Bisnis:
+            Diisi sesuai dengan penjelasan pada kajian / lampiran e.g.: EBITDA Margin, Net Profit Margin, ROE, Current Ratio, Liquidity Buffer, IBD to Invested Capital, DSCR, Economic profit = invested capital x (ROIC-WACC), Nilai kelayakan ekonomi ( NPV > 0 , IRR > WACC dll), ROA.
             
-            2. Proyeksi Keuangan untuk Aset Baru (Pendapatan, Biaya per Tahun):
-            Tahun: ${projectionData.map(row => row.Year).join(', ')}
-            Pendapatan Proyeksi: ${projectionData.map(row => formatCurrency(parseFloat(row.Projected_Revenue))).join(', ')}
-            Biaya Proyeksi: ${projectionData.map(row => formatCurrency(parseFloat(row.Projected_Operating_Costs))).join(', ')}
+            Data Finansial dari CSV:
+            - Kinerja Historis Aset Operasional (Pendapatan, Beban per Tahun):
+              Tahun: ${operatingAssetData.map(row => row.Year).join(', ')}
+              Pendapatan: ${operatingAssetData.map(row => formatCurrency(parseFloat(row.Operating_Revenue))).join(', ')}
+              Beban: ${operatingAssetData.map(row => formatCurrency(parseFloat(row.Operating_Expenses))).join(', ')}
             
-            3. Arus Kas Proyek untuk Perhitungan NPV/IRR:
-            Arus Kas: ${cashflowData.map(cf => formatCurrency(cf)).join(', ')} (Tahun 0 adalah investasi awal)
-            NPV yang Dihitung: ${formatCurrency(currentNPV)}
-            IRR yang Dihitung: ${(currentIRR * 100).toFixed(2)}%
+            - Proyeksi Keuangan untuk Aset Baru (Pendapatan, Biaya per Tahun):
+              Tahun: ${projectionData.map(row => row.Year).join(', ')}
+              Pendapatan Proyeksi: ${projectionData.map(row => formatCurrency(parseFloat(row.Projected_Revenue))).join(', ')}
+              Biaya Proyeksi: ${projectionData.map(row => formatCurrency(parseFloat(row.Projected_Operating_Costs))).join(', ')}
             
-            4. Penilaian Risiko:
-            Peringkat Risiko Saat Ini: ${currentRiskRating} (${currentRiskCategory})
+            - Arus Kas Proyek untuk Perhitungan NPV/IRR:
+              Arus Kas: ${cashflowData.map(cf => formatCurrency(cf)).join(', ')} (Tahun 0 adalah investasi awal)
+              NPV yang Dihitung: ${formatCurrency(currentNPV)}
+              IRR yang Dihitung: ${(currentIRR * 100).toFixed(2)}%
             
-            Berdasarkan data ini, berikan ringkasan yang mencakup:
-            - Gambaran umum dan tujuan proyek.
-            - Sorotan keuangan utama (NPV, IRR, tren arus kas keseluruhan).
-            - Penilaian konteks kinerja aset operasional.
-            - Pertimbangan risiko utama.
-            - Kesimpulan/rekomendasi singkat mengenai kelayakan proyek.
+            - Penilaian Risiko (Finansial):
+              Peringkat Risiko Saat Ini: ${currentRiskRating} (${currentRiskCategory})
             
-            Buatlah profesional, ringkas, dan sesuai untuk komite investasi. Gunakan Bahasa Indonesia.
+            2. Kepentingan / Objektivitas / Tujuan:
+            ${purposeText || 'Tidak ada penjelasan yang diberikan.'}
+            
+            3. Lingkungan, Sosial, dan Ekonomi:
+            Diisi Penjelasan singkat sesuai dengan penjelasan pada kajian aspek Sosial dan Ekonomi menunjukkan bahwa e.g.: Jumlah tenaga kerja yang dilibatkan, Kontribusi terhadap GDP, Dampak Lingkungan.
+            Kajian: ${environmentalText || 'Tidak ada penjelasan yang diberikan.'}
+            
+            4. Fiskal:
+            Diisi Penjelasan singkat sesuai dengan penjelasan pada kajian aspek Fiskal menunjukkan bahwa e.g.: Kontribusi Pajak Pemerintah Pusat/Daerah, Nilai kontribusi perusahaan sebagai agent of development ( kontribusi pajak dan PNBP sebesar Rp xxx,- , kontribusi Dividen sebesar Rp xxx,- dll), Besaran Insentif Pajak.
+            Kajian: ${fiscalText || 'Tidak ada penjelasan yang diberikan.'}
+            
+            5. Pelayanan dan Operasional:
+            Diisi sesuai dengan penjelasan pada kajian / lampiran e.g.: Menjaga skor CSI dengan target sebesar …, Downtime Operation (Serviceability Percentage), Length of Stay, Meminimalisasi Complain Resolution Rate, Peningkatan Jumlah Pengguna Jasa (Penumpang/Wisatawan/Visitor), Peningkatan Occupancy Rate, Pemenuhan 3S (Safety, Security, dan Services), Pemenuhan K3 (Kesehatan dan Keselamatan Kerja).
+            Kajian: ${operationalText || 'Tidak ada penjelasan yang diberikan.'}
+            
+            6. Legal:
+            Diisi sesuai dengan penjelasan pada kajian / lampiran e.g.: Analisa Hukum terkait Ketentuan Undang Undang Perseroan Terbatas, BUMN dan Ketentuan Internal Governance di Perusahaan (memuat analisa kewenangan Direksi member membuat keputusan untuk mengajukan usulan rencana), Analisa Hukum terkait Hubungan Hukum dengan Pihak Ketiga (jika ada), Analisa Pelaksanaan Fiduciary Duty Direksi Perusahaan (memuat analisa pelaksanaan FD atas pengajuan usulan rencana), Analisa Hukum terkait Lainnya (jika ada), Analisa Risiko Hukum dan Mitigasi (memuat risiko hukum dari semua analisa di atas, berikut dengan rekomendasi mitigasi).
+            Kajian: ${legalText || 'Tidak ada penjelasan yang diberikan.'}
+            
+            7. Manajemen Risiko:
+            Diisi sesuai dengan penjelasan pada kajian / lampiran e.g.: Nilai Eksposur Risiko, Biaya MItigasi Risiko.
+            Kajian: ${riskManagementText || 'Tidak ada penjelasan yang diberikan.'}
+            
+            8. Corporate Governance & Compliance:
+            Diisi sesuai dengan penjelasan pada kajian / lampiran e.g.: Penjelasan singkat terkait tingkat kepatuhan terhadap dokumen kelengkapan investasi/aksi korporasi dari Pengusul, Penjelasan singkat terkait tingkat kepatuhan internal.
+            Kajian: ${governanceText || 'Tidak ada penjelasan yang diberikan.'}
+            
+            9. Aspek Lainnya:
+            Dapat diusulkan parameter terkait aspek lainnya oleh Unit Terkait lainnya, e.g.: Meng-counter Sentimen Pemberitaan, Pemenuhan SLA untuk IT Maturity, SDM.
+            Kajian: ${otherAspectsText || 'Tidak ada penjelasan yang diberikan.'}
+            
+            Format output harus berupa memo yang terstruktur dengan judul bagian yang jelas untuk setiap aspek di atas.
             `;
 
             try {
